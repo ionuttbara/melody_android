@@ -1,6 +1,9 @@
 Melody Script for Android
 Optimizes The Android Phone.
-
+<h1 align="center">
+  <br>
+  <img src="https://raw.githubusercontent.com/jbara2002/melody12/master/logo.png" alt="Melody logo"></a>
+</h1>
 
 # Requiments
 Android Phone with OS Version 7.1.1 or newer.  
