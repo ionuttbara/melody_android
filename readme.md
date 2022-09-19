@@ -3,8 +3,8 @@ Optimizes The Android Phone.
 
 
 # Requiments
-Android Phone with OS Version 7.1.1 or newer.
-ADB Installed with Drivers (the ADB Installer will be put in release and source code management).
+Android Phone with OS Version 7.1.1 or newer.  
+ADB Installed with Drivers (the ADB Installer will be put in release and source code management).  
 
 
 # Commands
