@@ -43,8 +43,6 @@ The list of commands for
 >>adb shell settings put global cached_apps_freezer enabled  
 >>adb shell settings put global app_standby_enabled 1  
 >>adb shell settings put global adaptive_battery_management_enabled 0  
->>adb shell settings put secure long_press_timeout 250  
->>adb shell settings put secure multi_press_timeout 250  
 >>adb shell settings put global app_restriction_enabled true  
 >>adb shell settings put system intelligent_sleep_mode 0  
 >>adb shell settings put secure adaptive_sleep 0  
@@ -52,3 +50,11 @@ The list of commands for
 >>adb shell settings put secure screensaver_enabled 0   
 >>adb shell settings put secure screensaver_activate_on_sleep 0  
 >>adb shell settings put secure screensaver_activate_on_dock 0  
+># Speed up Long Press Delay
+>> adb shell settings put secure long_press_timeout 250
+>> adb shell settings put secure multi_press_timeout 250
+># Remove User Manual from Settings (Samsung OneUI)
+>> adb shell settings put global online_manual_url 0
+># Call Features. Enabling extra in-call volume and Noice Reduction
+>> adb shell settings put system call_extra_volume 1
+>> adb shell settings put system call_noise_reduction 1
