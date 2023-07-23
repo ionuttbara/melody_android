@@ -7,6 +7,7 @@ Optimizes The Android Phone.
 
 # Requiments
 Android Phone with OS Version 7.1.1 or newer.  
+For Samsung Phones with OS Version 9 or newer (OneUI only).
 ADB Installed with Drivers (the ADB Installer will be put in release and source code management).
 # Commands
 
@@ -72,13 +73,17 @@ The list of commands for
 >>```
 >>adb shell settings put global private_dns_specifier family.adguard-dns.com
 >>```
+> Improve Network Speeds by fixing signal quality (not for all devices)
+>>```
+>>adb shell settings put global preferred_network_mode 9,9
+>>```
 > # IMPROVING POWER MANAGEMENT ON PHONES
 >*Improving the way the phone is sleeping by disable adaptive sleep algorithms.*  
 >*If you get delayed notifications of messaging applications, go to Settings, App, go to messaging app, battery and set to __Unrestricted__.*  
 >*Don't use 3rd Party or OEM Applications for doing that. I don't recommend doing that with them because the effect will be not desired as seen.*  
 >*Recommendation: Removing all 3rd Cleaning or Device Care Application for the algorithm to work correctly.*  
 >>```
->>adb shell settings put global cached_apps_freezer enabled  
+>>adb shell settings put global cached_apps_freezer disabled  
 >>```
 >>```
 >>adb shell settings put global sem_enhanced_cpu_responsiveness 0
@@ -87,7 +92,7 @@ The list of commands for
 >>adb shell settings put global enhanced_processing 0
 >>```
 >>```
->>adb shell settings put global app_standby_enabled 1  
+>>adb shell settings put global app_standby_enabled 0
 >>```
 >>```
 >>adb shell settings put global adaptive_battery_management_enabled 0 
@@ -100,7 +105,19 @@ The list of commands for
 >>```
 >>```
 >>adb shell settings put secure adaptive_sleep 0 
->>``` 
+>>```
+>>```
+>>adb shell settings put global automatic_power_save_mode 0
+>>```
+>>```
+>>adb shell settings put global low_power 0
+>>```
+>>```
+>>adb shell settings put global dynamic_power_savings_enabled 0
+>>```
+>>```
+>>adb shell settings put global dynamic_power_savings_disable_threshold 20
+>>```
 ># DISABLING ANDROID SCREEN SAVER TO GET BETTER BATTERY LIFE  
 >>```
 >>adb shell settings put secure screensaver_enabled 0  
@@ -119,10 +136,6 @@ The list of commands for
 >> adb shell settings put secure multi_press_timeout 250
 >> ```
 >> 
-># Remove User Manual from Settings (Samsung OneUI)
->> ```
->> adb shell settings put global online_manual_url 0
->> ```
 ># Call Features. Enabling extra in-call volume and Noice Reduction
 ># Add Volume in Call
 >> ```
@@ -167,6 +180,21 @@ The list of commands for
 >>```
 >>adb shell settings put system camera_feedback_vibrate 0
 >>```
+>>```
+>>adb shell settings put system sound_effects_enabled 0
+>>```
+
+>Enable Sync Vibration with Ringtone
+>>```
+>>adb shell settings put system sync_vibration_with_ringtone 1
+>>```
+>>```
+>>adb shell setting put system sync_vibration_with_ringtone_2 1
+>>```
+>Enable Sync Vibration with Notification
+>>```
+>>adb shell settings put system sync_vibration_with_notification 1
+>>```
 >Vibration in general
 >>```
 >>adb shell settings put system haptic_feedback_enabled 0
@@ -203,6 +231,9 @@ The list of commands for
 >> ```
 >> adb shell settings put secure charging_sounds_enabled 0
 >> ```
+>> ```
+>> adb shell settings put secure adaptive_charging_enabled 0
+>> ```
 ># Bluetooth Audio Codecs
 >> ```
 >> adb shell settings put secure bluetooth_a2dp_bt_uhq_state 1
@@ -224,6 +255,110 @@ The list of commands for
 >> ```
 >> adb shell settings put secure smartspace 0
 >> ```
->> ```
 >> adb shell settings put global google_core_control 0
 >> ```
+>> ```
+>> adb shell settings put secure adaptive_connectivity_enabled 0
+>> ```
+># Disable Android's Motion Engine Sensor (can save some battery)
+>> ```
+>> adb shell settings put system master_motion 0
+>> ```
+>> ```
+>> adb shell settings put system motion_engine 0
+>> ```
+>> ```
+>> adb shell settings put system air_motion_engine 0
+>> ```
+>> ```
+>> adb shell settings put system air_motion_wake_up 0
+>> ```
+>> ```
+>> adb shell settings put system intelligent_sleep_mode 0
+>> ```
+>> ```
+>> adb shell settings put secure adaptive_sleep 0
+>> ```
+># Disabling Online Manual URL and Remote Support (Samsung ONE UI, All version with/o Tips Installed)
+>>```
+>>adb shell settings put global online_manual_url 0
+>>```
+>>```
+>>adb shell settings put system remote_control 0
+>>```
+># Improve app launch times for Samsung Phones (and telemetry in Vanilla Android)
+>>```
+>>adb shell settings put global activity_starts_logging_enabled 0
+>>```
+>>```
+>>adb shell settings put secure send_action_app_error 0
+>>```
+>>```
+>>adb shell settings put global bixby_pregranted_permissions 0
+>>```
+>>```
+>>adb shell settings put system send_security_reports 0
+>>```
+>>```
+>>adb shell settings put system rakuten_denwa 0
+>>```
+># Audio Quality Improving in phones
+>>```
+>>adb shell settings put system tube_amp_effect 1
+>>```
+>>```
+>>adb shell settings put system k2hd_effect 1
+>>```
+># Enable Multimedia Packet Scheduler (Also you can do by going in Developer Options from Settings)
+>>```
+>>adb shell settings put system multicore_packet_scheduler 1
+>>```
+># Killing Game Optimizing Service (GOS in Samsung) 👆GOS
+>>```
+>>adb shell settings put secure game_auto_temperature_control 0
+>>```
+>>```
+>>adb shell pm clear --user 0 com.samsung.android.game.gos
+>>```
+>>```
+>>adb shell settings put secure gamesdk_version 0
+>>```
+>>```
+>>adb shell settings put secure game_home_enable 0
+>>```
+>>```
+>>adb shell settings put secure game_bixby_block 1
+>>```
+># Block Galaxy System Updates (Policy and/or Device Update) (not interference with Galaxy Store Update or with F/OTA Updates)
+>>```
+>>adb shell settings put global galaxy_system_update_block 1
+>>```
+># OLED Screen Tweak
+>>```
+>>adb shell settings put global burn_in_protection 1
+>>```
+># Improve Touchscreen Responsiness and Latency on Android Phones
+>>```
+>>adb shell settings put secure tap_duration_threshold 0.0
+>>```
+>>```
+>>adb shell settings put secure touch_blocking_period 0.0
+>>```
+># Disable Background Scanning for Devices (Bluetooth, Nearby Devices)
+>>```
+>>adb shell settings put system nearby_scanning_permission_allowed 0
+>>```
+>>```
+>>adb shell settings put system nearby_scanning_enabled 0
+>>```
+>>```
+>>adb shell settings put global ble_scan_always_enabled 0
+>>```
+># Disable hotword detection (OK Google, or Hey Google) in-background detection (improves baterry)
+>>```
+>>adb shell settings put global hotword_detection_enabled 0
+>>```
+># Another Samsung Phone Settings
+>>```
+>>adb shell settings put system mcf_continuity 0
+>>```
