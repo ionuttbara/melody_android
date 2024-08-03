@@ -14,10 +14,7 @@ ADB Installed with Drivers (the ADB Installer will be put in release and source 
 __YOU CAN CREATE A BAT FILE FROM THAT COMMANDS.__
 The list of commands for
 > # IMPROVING SYSTEM PERFORMANCE
->*Disables Z-RAM ,Window Blur Effects and animations*
->> ```
->>adb shell settings put global zram_enabled 0
->>```
+>*Disables Window Blur Effects and animations*
 >>```
 >>adb shell settings put global accessibility_reduce_transparency 1
 >>```
@@ -83,9 +80,6 @@ The list of commands for
 >*Don't use 3rd Party or OEM Applications for doing that. I don't recommend doing that with them because the effect will be not desired as seen.*
 >*Recommendation: Removing all 3rd Cleaning or Device Care Application for the algorithm to work correctly.*
 >>```
->>adb shell settings put global cached_apps_freezer disabled
->>```
->>```
 >>adb shell settings put global sem_enhanced_cpu_responsiveness 0
 >>```
 >>```
@@ -109,6 +103,7 @@ The list of commands for
 >>```
 >>adb shell settings put global automatic_power_save_mode 0
 >>```
+>> # Disable Android Power Saver Mode, if you want to re-enable go to Setting or set *low_power* to 1 in command.
 >>```
 >>adb shell settings put global low_power 0
 >>```
@@ -153,6 +148,7 @@ The list of commands for
 >> ```
 >> adb shell settings put system call_end_vib 0
 >> ```
+># Disabling Swipe to Call/Messsage from Samsung Contacts App
 >> ```
 >> adb shell settings put global swipe_to_call_message 0
 >> ```
@@ -261,7 +257,10 @@ The list of commands for
 >> ```
 >> adb shell settings put secure adaptive_connectivity_enabled 0
 >> ```
-># Disable Android's Motion Engine Sensor (can save some battery)
+>> ```
+>> adb shell settings put secure systemui.google.opa_enabled 0
+>> ```
+># Disable Android's Motion Engine Sensor (can save some battery) also disables some adaptive sleep bad features
 >> ```
 >> adb shell settings put system master_motion 0
 >> ```
@@ -360,6 +359,22 @@ The list of commands for
 >>adb shell settings put global hotword_detection_enabled 0
 >>```
 ># Another Samsung Phone Settings
+>## Samsung Cross-Device Sync
 >>```
 >>adb shell settings put system mcf_continuity 0
+>>adb shell settings put system mcf_continuity_permission_denied 1
+>>adb shell settings put system mcf_permission_denied 1
+>>```
+>## Disable RAM Plus 
+>>```
+>>adb shell settings put global ram_expand_size_list 0
+>>```
+>>```
+>>adb shell settings put global zram_enabled 0
+>>```
+># Refresh phone commands (these helps to refresh phone apps by a bit of boost)
+>>```
+>>adb shell cmd package compile -m speed-profile -a
+>>adb shell cmd package bg-dexopt-job
+>>adb shell pm trim-caches 999999999999999999
 >>```
