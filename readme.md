@@ -255,6 +255,7 @@ The list of commands for
 >> ```
 >> adb shell settings put secure smartspace 0
 >> ```
+>> ```
 >> adb shell settings put global google_core_control 0
 >> ```
 >> ```
