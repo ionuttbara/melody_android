@@ -378,3 +378,11 @@ The list of commands for
 >>adb shell cmd package bg-dexopt-job
 >>adb shell pm trim-caches 999999999999999999
 >>```
+># Developer Options
+>>```
+>>adb shell settings put global development_settings_enabled 1
+>>```
+># Wifi Tweaks
+>>```
+>>adb shell settings put global wifi_poor_connection_warning 0
+>>adb shell 
